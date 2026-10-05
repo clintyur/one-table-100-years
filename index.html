@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>One Table, 100 Years — A Nom Wah Tea Parlor Story</title>
+  <meta name="description" content="A short click-through game: sit at one table in Nom Wah Tea Parlor on Doyers Street and watch more than 100 years go by.">
+  <meta name="theme-color" content="#1b0f0c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app" class="is-busy">
+    <header id="hud">
+      <div class="brand"><span class="brand-zh">南華茶室</span><span class="brand-en">One Table, 100 Years</span></div>
+      <ol id="timeline" aria-label="Timeline of your visit"></ol>
+      <button id="sound-btn" class="icon-btn" type="button" aria-label="Turn sound off">🔊</button>
+    </header>
+
+    <main id="stage-wrap">
+      <div id="stage">
+        <div id="zoom">
+          <div id="scene-host"></div>
+          <div id="spots"></div>
+        </div>
+        <div id="grade" aria-hidden="true"></div>
+        <div id="era-tag" aria-hidden="true"></div>
+        <div id="caption" aria-live="polite"></div>
+        <div id="flash" aria-hidden="true"></div>
+        <div id="cover" aria-hidden="true"></div>
+        <div id="shift" aria-hidden="true">
+          <div class="steam"></div>
+          <div class="shift-card"><div class="shift-year"></div><div class="shift-title"></div></div>
+        </div>
+
+        <section id="title" class="title-screen" aria-label="Title screen">
+          <div id="title-art" aria-hidden="true"></div>
+          <div class="title-card">
+            <div class="title-zh">南華茶室</div>
+            <h1>One Table, 100&nbsp;Years</h1>
+            <p>A Nom Wah Tea Parlor story · Doyers Street, Chinatown · 1920 → Today</p>
+            <div class="title-btns">
+              <button id="start-btn" class="btn btn-red" type="button">Take a seat</button>
+            </div>
+            <div class="title-meta">About 10 minutes · Sound on 🔊 · <button id="title-about" class="link-btn" type="button">Notes &amp; sources</button></div>
+          </div>
+        </section>
+      </div>
+
+      <div id="panel">
+        <div id="prompt" aria-live="polite"></div>
+        <button id="next-action" class="next-action" type="button"></button>
+        <div id="dialog" aria-label="Dialogue. Click or press Space to continue.">
+          <div id="nametag"></div>
+          <p id="dialog-text" aria-hidden="true"></p>
+          <div id="next-ind" aria-hidden="true">▼</div>
+          <div id="dialog-live" class="sr-only" aria-live="polite"></div>
+        </div>
+      </div>
+    </main>
+
+    <div id="overlay" class="overlay" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <script src="js/audio.js"></script>
+  <script src="js/art/people.js"></script>
+  <script src="js/art/things.js"></script>
+  <script src="js/art/room.js"></script>
+  <script src="js/art/street.js"></script>
+  <script src="js/story.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
