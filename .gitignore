@@ -1,3 +1,4 @@
 docs/user_research_26DR2.txt
 .DS_Store
 dist/
+__pycache__/
