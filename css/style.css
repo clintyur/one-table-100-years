@@ -154,8 +154,8 @@ body { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 #spots > * { pointer-events: auto; }
 .is-busy #spots > * { pointer-events: none; }
 .is-busy .spot { opacity: 0; transform: translate(-50%, -50%) scale(.5); }
-.spot-person { transform: translate(-50%, -100%); }
-.is-busy .spot-person { transform: translate(-50%, -100%) scale(.5); }
+.spot.spot-person { transform: translate(-50%, -100%); }
+.is-busy .spot.spot-person { transform: translate(-50%, -100%) scale(.5); }
 .hit { cursor: pointer; transition: fill .15s; }
 .hit:hover { fill: rgba(255, 243, 176, .16); }
 .is-busy .hit { pointer-events: none; }
