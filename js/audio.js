@@ -134,11 +134,32 @@
     try { return typeof document !== 'undefined' && !!document.hidden; } catch (e) { return false; }
   }
 
+  // Self-healing: if the audio device fails (e.g. a laptop is plugged into a projector and the
+  // output switches), mark the context broken; the next click rebuilds it and restarts the music.
+  var broken = false, ctxGen = 0;
+  function watchHealth(c) {
+    try {
+      c.addEventListener('statechange', function () { if (c === ctx && c.state === 'closed') broken = true; });
+      c.addEventListener('error', function () { if (c === ctx) broken = true; });
+    } catch (e) { /* older browsers: nothing to watch */ }
+  }
+  function rebuildCtx() {
+    var old = ctx;
+    broken = false;
+    if (timer) { clearInterval(timer); timer = null; }
+    current = null; fading = [];
+    ctx = null; bus = null; waves = {}; noiseBuf = null;
+    unlocked = false; // unlock() redoes the first-gesture setup and restarts the wanted track
+    try { if (old && old.state !== 'closed') quiet(old.close()); } catch (e) { /* ignore */ }
+  }
+
   function ensureCtx() {
     if (ctx) return ctx;
     if (!AC) return null;
     try {
       try { ctx = new AC({ latencyHint: 'interactive' }); } catch (e1) { ctx = new AC(); }
+      ctxGen++;
+      watchHealth(ctx);
       buildGraph();
     } catch (e) {
       warnOnce('Web Audio unavailable: ' + (e && e.message));
@@ -1392,6 +1413,7 @@
   // ===========================================================================
 
   function unlock() {
+    if (broken) rebuildCtx();
     var c = ensureCtx();
     if (!c) return;
     if (c.state !== 'running' && c.state !== 'closed' && !docHidden()) {
@@ -1410,7 +1432,7 @@
 
   if (AC && typeof document !== 'undefined' && document && typeof document.addEventListener === 'function') {
     // Safety net: unlock on the first gesture anywhere even if the UI forgets to.
-    var onGesture = function () { if (!ctx || ctx.state !== 'running') unlock(); };
+    var onGesture = function () { if (broken || !ctx || ctx.state !== 'running') unlock(); };
     ['pointerdown', 'mousedown', 'touchend', 'keydown'].forEach(function (ev) {
       document.addEventListener(ev, onGesture, true);
     });
@@ -1514,6 +1536,8 @@
         voices: Object.keys(VOICES)
       };
     },
+    _health: function () { return { broken: broken, state: ctx ? ctx.state : 'none', generation: ctxGen }; }, // dev/test
+    _breakForTest: function () { broken = true; },                                                         // dev/test
     _compileTrack: compileTrack,   // dev/test: parse a track and return its compiled form
     _renderOffline: renderOffline  // dev/test: see above
   };

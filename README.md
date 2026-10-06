@@ -17,6 +17,7 @@ python3 -m http.server 5557
 Then visit http://localhost:5557.
 
 **Tip for presenting:** add `?stop=N` to the URL to jump straight to an era:
+- or use **Presenting? Jump to:** on the title screen
 - `?stop=0` is 1920
 - `?stop=3` is the 1950s–60s
 - `?stop=6` is 2010
@@ -48,6 +49,10 @@ The ending shows "the recipe" that kept Nom Wah going, which answers the researc
   - `things.js`: food, cars, radios and phones
 - **Music & sound** are synthesized in `js/audio.js`, with one period track per era: ragtime, swing, big band, doo-wop, disco, boom-bap, indie pop and lo-fi.
 - **Look & feel** is in `css/style.css`, including each era's color grading (sepia → full color).
+
+## Emailing it (one-file version)
+
+`tools/make_zip.sh` bundles everything (code, art, music, fonts) into **one** self-contained file, `dist/One-Table-100-Years.html`, and zips it with `HOW TO PLAY.txt` as `dist/One-Table-100-Years.zip` (~190 KB). The one-file version works offline and contains no `.js` files, which matters because Gmail blocks zips that contain `.js` files.
 
 ## Putting it online
 

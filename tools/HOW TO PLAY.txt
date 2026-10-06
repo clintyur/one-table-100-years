@@ -1,0 +1,58 @@
+ONE TABLE, 100 YEARS - a Nom Wah Tea Parlor story
+=================================================
+
+WHAT IT IS
+A short (about 10 minute) click-through story game for our class presentation.
+You sit at one table inside Nom Wah Tea Parlor (13 Doyers Street, Chinatown, NYC).
+Every time you do something new - meet the host, look around, order dim sum -
+time jumps forward:
+1920 > 1930s > 1940s > 1950s-60s > 1970s-80s > 1990s-2000s > 2010 > 2020 > Today.
+Click the people around you and they tell you Nom Wah's history.
+
+
+HOW TO OPEN IT
+You do NOT need Claude, any app, an account, or even internet. Just a web browser.
+
+1. Unzip the file you were sent.
+   - Mac: double-click the .zip
+   - Windows: right-click the .zip > "Extract All" > "Extract"
+2. Open the folder and double-click:  One-Table-100-Years.html
+3. It opens in your web browser (Chrome, Safari, Edge or Firefox). That's it.
+
+Use a laptop or desktop computer (not a phone) for presenting.
+
+
+HOW TO PLAY
+- Click "Take a seat" to start. Turn the sound up: every era has its own music.
+- Click the text box (or press the SPACE bar) to read the next line.
+- Red pulsing circles = people or things you need to click to keep going.
+  Small gold sparkles = optional extras (cars outside the window, radios, etc.).
+- When an era is finished, a red button appears in the bottom-right corner
+  (for example "Flag down the dim sum lady"). Click it to jump forward in time.
+- Along the way you'll give your name, order dim sum, pick a tea, and
+  "tap the table" twice to say thank you.
+- The ending sums up what kept Nom Wah going for more than 100 years.
+
+
+PRESENTING TIPS
+- FULL SCREEN: click the square-corners button in the top-right corner
+  (or press F11 on Windows, Control+Command+F on a Mac).
+- START FROM A CERTAIN ERA (to split the presentation): on the title screen,
+  click a year next to "Presenting? Jump to:".
+- RESTART: click the circular-arrow button in the top-right corner, then OK.
+- SOUND ON/OFF: click the speaker button in the top-right corner.
+
+
+IF SOMETHING LOOKS WRONG
+- You see code or a blank page: make sure you unzipped it first, then open
+  One-Table-100-Years.html in a web browser (right-click > Open With > Chrome).
+- No sound: click the speaker button, and check the computer's volume.
+  (Browsers only allow sound after your first click, so it starts with
+  "Take a seat".)
+- Everything is inside that one .html file. Nothing else needs to be installed.
+- School computer won't open files? Backup online version:
+  https://clintyur.github.io/one-table-100-years/
+
+
+An unofficial class project - not affiliated with Nom Wah Tea Parlor.
+Sources are listed inside the game: title screen > "Notes & sources".

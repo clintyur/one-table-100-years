@@ -38,7 +38,7 @@
     e1930: ext(base15, { device: 'cathedral', phone: 'candlestick', calendar: '1935', car: 'sedan30', decor: ['scroll', 'mirror'], street: '1930' }),
     e1940: ext(base15, { device: 'radio40', phone: 'rotary', calendar: '1943', car: 'sedan40', decor: ['scroll', 'mirror', 'photosFew'], street: '1940' }),
     e1950: ext(base15, { device: 'radio50', phone: 'rotary', calendar: '1950', car: 'fins50', decor: ['scroll', 'mirror', 'photosFew'], street: '1950', wall: '#f0e0bc' }),
-    e1970: ext(base13, { device: 'boombox', phone: 'pushbutton', calendar: '1985', car: 'checker70', decor: ['mooncakePoster', 'fan', 'photosFew'], metalPot: true }),
+    e1970: ext(base13, { device: 'boombox', deviceAt: [620, 252], deviceScale: 0.56, phone: 'pushbutton', calendar: '1985', car: 'checker70', decor: ['mooncakePoster', 'fan', 'photosFew'], metalPot: true }),
     e1990: ext(base13, { wall: '#d6bc5a', device: null, phone: 'cordless', calendar: '1996', car: 'crownvic90', tins: 'dusty', dim: 0.16, fog: 0.38,
       decor: ['crt', 'fan', 'riceSacks', 'plantDroopy', 'photosFew', 'filmLight', 'mooncakePoster'], metalPot: true, street: '1990' }),
     e2010: ext(base13, { wall: '#f2d460', lights: 'pendant4', cabinet: '#3d6fa8', tins: 'shiny', cloth: 'check', device: 'laptop', phone: null, pos: true,
@@ -212,7 +212,8 @@
     out += '<g transform="translate(620,392)">' + ART.register() + '</g>';
     if (c.phone) out += '<g transform="translate(770,392)">' + ART.phone(c.phone) + '</g>';
     if (c.pos) out += '<g transform="translate(760,392)">' + ART.tabletPOS() + '</g>';
-    if (c.device && c.device !== 'flatTV') out += '<g transform="translate(980,392)">' + ART.device(c.device) + '</g>';
+    var dp = c.deviceAt || [980, 392], ds = c.deviceScale || 1;
+    if (c.device && c.device !== 'flatTV') out += '<g transform="translate(' + dp[0] + ',' + dp[1] + ') scale(' + ds + ')">' + ART.device(c.device) + '</g>';
     if (c.decor.indexOf('takeout') >= 0) {
       out += R(712, 330, 56, 62, '#e7dcc2', ' rx="3"') + R(762, 342, 50, 50, '#efe6d0', ' rx="3"') + S('M 724 330 Q 740 312 756 330', '#cbb991', 3) +
         R(818, 352, 74, 40, '#f4f1ea', ' stroke="#b8312b" stroke-width="3"') + '<text x="855" y="378" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#b8312b">DUMPLINGS</text>';
@@ -360,7 +361,7 @@
     out += '<g transform="translate(598,866) scale(1.15)">' + ART.cupSvg(tea || '#a8743a') + '</g>';
     if (c.caddy) out += '<g transform="translate(1180,812) scale(.8)">' + ART.caddy() + '</g>';
     out += '<g transform="translate(820,892) scale(.9)">' + ART.chopsticks() + '</g>';
-    var slots = [[740, 836], [920, 830], [1060, 860], [700, 890], [1000, 892]];
+    var slots = [[800, 828], [960, 826], [1104, 846], [880, 876], [1040, 882]]; // clear of the prompt (bottom-left) and button (bottom-right)
     (items || []).forEach(function (it, i) {
       var s = slots[i % slots.length];
       out += '<g class="dish' + (it.fresh ? ' dish-new' : '') + '" transform="translate(' + s[0] + ',' + s[1] + ') scale(.72)">' + ART.food(it.type) + '</g>';

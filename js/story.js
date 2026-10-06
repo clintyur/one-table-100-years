@@ -146,7 +146,7 @@
     jasmine: { en: 'Jasmine', zh: '香片', color: '#c9b46a',
       line: 'Jasmine — green tea scented with jasmine blossoms. Light and fragrant.' },
     oolong: { en: 'Oolong', zh: '烏龍', color: '#a8642a',
-      line: 'Oolong — somewhere between green tea and black tea. The old regulars here have always loved it.' },
+      line: 'Oolong — somewhere between green tea and black tea. Toasty and smooth.' },
     chrysanthemum: { en: 'Chrysanthemum', zh: '菊花', color: '#e0bf4a',
       line: 'Chrysanthemum — not tea leaves at all, but dried flowers. Smooth and a little sweet.' }
   };
@@ -168,8 +168,8 @@
         ['narr', 'New York City, 1920. You turn the corner onto Doyers Street, in Chinatown — right next to the Lower East Side.'],
         { button: 'Walk down the street' },
         { sfx: 'step' }, { zoom: [1.25, 800, 470] }, { sfx: 'step' },
-        ['narr', 'It\'s a short, crooked block with a sharp bend in the middle. Newspapers nicknamed the bend the "Bloody Angle" — back in the tong wars, its blind corner was a spot for ambushes.'],
-        ['narr', 'A few doors down, this street was once home to New York\'s first Chinese-language theater.'],
+        ['narr', 'It\'s a short, crooked block with a sharp bend in the middle. The bend is known as the "Bloody Angle." During the tong wars — feuds between rival Chinatown groups called tongs — its blind corner was a spot for ambushes.'],
+        ['narr', 'A few doors down stood New York\'s first Chinese-language theater, which opened in 1893.'],
         { button: 'Keep walking' },
         { sfx: 'step' }, { zoom: [1.5, 800, 470] }, { sfx: 'step' },
         ['narr', 'Right in the crook of the bend, the air smells like butter and toasted almonds. A bakery and tea parlor has opened here: Nom Wah.']
@@ -181,13 +181,13 @@
           ['narr', 'He seats you at a little table by the front window and pours you a cup of hot tea.'],
           { sfx: 'pour' },
           ['waiter', 'Almond cookies are coming out of the oven soon. Enjoy!', 'happy'],
-          ['narr', 'You take a sip. The steam swirls up around you...']
+          ['narr', 'You take a sip. The steam swirls up around you…']
         ] },
-        { id: 'car', scene: 'street', label: 'Model T', at: [330, 640], area: [190, 600, 290, 170], script: [
+        { id: 'car', scene: 'street', label: 'Model T', at: [450, 640], area: [190, 600, 290, 170], script: [
           ['narr', 'A Ford Model T is parked at the curb. In 1920, about half the cars in America are Model Ts.']
         ] },
         { id: 'people', scene: 'street', label: 'People on the street', at: [1020, 480], area: [950, 490, 140, 170], script: [
-          ['narr', 'Almost everyone out here is a man in a suit and hat. Under the Chinese Exclusion Act of 1882, very few Chinese women are allowed into the country.']
+          ['narr', 'Almost everyone out here is a man in a suit and hat. Laws like the Chinese Exclusion Act of 1882 let very few Chinese women into the country.']
         ] },
       ],
       next: 'Meet the host'
@@ -202,7 +202,7 @@
       start: 'room',
       prompt: 'Talk to May — click anyone (or anything) that glows.',
       intro: [
-        ['narr', 'The steam clears. Same table, same window... but the calendar on the wall now says 1935.'],
+        ['narr', 'The steam clears. Same table, same window… but the calendar on the wall now says 1935.'],
         ['may', 'Welcome to Nom Wah! I\'m May Choy. My husband Ed and I run this place.', 'happy'],
         ['may', 'What name should I put down for your table?'],
         { name: true },
@@ -211,7 +211,7 @@
       spots: [
         { id: 'may', actor: 'may', label: 'May Choy', required: true, script: [
           ['you', 'So what kind of place is this?'],
-          ['may', 'A bakery first! We bake right here at 15 Doyers Street, and we pour tea next door at Number 13.'],
+          ['may', 'A bakery first! We bake right here at 15 Doyers Street, and next door, at Number 13, we sell tea.'],
           ['may', 'Everyone comes for our almond cookies and our mooncakes — lotus seed or red bean.'],
           ['may', 'People come from all over. Our Chinatown neighbors, and folks from all around the city.'],
           ['may', 'Here — an almond cookie for you. On the house!', 'happy'],
@@ -219,15 +219,15 @@
         ] },
         { id: 'ed', actor: 'ed', label: 'Ed Choy', script: [
           ['ed', 'Careful, these are fresh out of the oven!'],
-          ['ed', 'At the Mid-Autumn Festival, the line for our mooncakes goes right out the door and down the block.', 'happy']
+          ['ed', 'At the Mid-Autumn Festival, everybody wants our mooncakes!', 'happy']
         ] },
-        { id: 'radio', label: 'Radio', at: [980, 250], area: [915, 250, 130, 145], script: [
+        { id: 'radio', label: 'Radio', at: [905, 300], area: [915, 250, 130, 145], script: [
           ['narr', '♪ A wooden "cathedral" radio on the counter crackles out a swing tune.']
         ] },
         { id: 'phone', label: 'Telephone', at: [770, 262], area: [730, 255, 90, 140], script: [
           ['narr', 'A candlestick telephone. To make a call, you lift the earpiece and ask the operator for a number.']
         ] },
-        { id: 'window', label: 'Window', at: [220, 430], area: [58, 300, 324, 257], script: [
+        { id: 'window', label: 'Window', at: [300, 430], area: [58, 300, 324, 257], script: [
           ['narr', 'A dark green sedan with rounded fenders rumbles past the window.']
         ] }
       ],
@@ -247,20 +247,20 @@
       ],
       spots: [
         { id: 'counter', label: 'Bakery case', at: [700, 430], area: [520, 404, 380, 82], required: true, script: [
-          ['narr', 'The glass counter is packed with mooncakes and almond cookies. All through the 1940s, \'50s and \'60s, most of Nom Wah\'s business comes from the bakery.']
+          ['narr', 'The glass counter is packed with mooncakes and almond cookies. From now through the 1960s, most of Nom Wah\'s business will come from the bakery.']
         ] },
         { id: 'radio', label: 'Radio', at: [980, 270], area: [905, 296, 150, 100], required: true, script: [
           { sfx: 'page' },
-          ['narr', '♪ The music cuts out for a news bulletin...'],
+          ['narr', '♪ The music cuts out for a news bulletin…'],
           ['narr', 'Congress has repealed the Chinese Exclusion Act — the 1882 law that kept most Chinese immigrants out of the country.'],
-          ['narr', 'The new rules allow only about 105 Chinese immigrants a year. But the door is finally open a crack.']
+          ['narr', 'The new rules allow only 105 Chinese immigrants a year. But the door is finally open a crack.']
         ] },
         { id: 'lee', actor: 'lee', label: 'Mr. Lee', required: true, script: [
           ['lee', 'Did you hear the radio? Maybe now my wife and son can finally come over from China.'],
           ['lee', 'I\'ve lived here on my own for years. So have most of the men on this street.', 'worried'],
-          ['lee', 'That\'s why I come every afternoon. A pot of tea, a bun, some friends... it\'s the closest thing I have to a family table.']
+          ['lee', 'That\'s why I come every afternoon. A pot of tea, a bun, some friends… it\'s the closest thing I have to a family table.']
         ] },
-        { id: 'window', label: 'Window', at: [220, 430], area: [58, 300, 324, 257], script: [
+        { id: 'window', label: 'Window', at: [300, 430], area: [58, 300, 324, 257], script: [
           ['narr', 'A shiny maroon sedan rolls by. Out on the Bowery, streetcars still clang along the tracks.']
         ] },
         { id: 'calendar', label: 'Calendar', at: [478, 300], area: [430, 300, 96, 120], script: [
@@ -293,15 +293,15 @@
           ['wally50', 'I\'m Wally. I just came over from China this year. I\'m sixteen.'],
           ['you', 'Sixteen? And you\'re already working?'],
           ['wally50', 'Started the day I arrived. Washing dishes, busing tables — whatever they need.'],
-          ['wally50', 'I don\'t talk much. I just work hard.', 'serious'],
+          ['wally50', 'It\'s hard work, but I\'m learning how everything here runs.'],
           { caption: 'Four years later…' },
           { swap: ['wally50', 'wally54'] },
-          ['wally54', 'Remember me? I\'m twenty now... and I\'m the manager of Nom Wah!', 'proud']
+          ['wally54', 'Remember me? I\'m twenty now… and I\'m the manager of Nom Wah!', 'proud']
         ] },
-        { id: 'window', label: 'Window', at: [220, 430], area: [58, 300, 324, 257], script: [
-          ['narr', 'A two-tone car with big chrome tail fins cruises by. And the old elevated train at the end of the block? It shut down in 1955.']
+        { id: 'window', label: 'Window', at: [300, 430], area: [58, 300, 324, 257], script: [
+          ['narr', 'A two-tone car with shiny chrome trim cruises by. And the elevated train rattling past the end of the block? It will shut down in 1955.']
         ] },
-        { id: 'radio', label: 'Radio', at: [980, 270], area: [900, 300, 160, 92], script: [
+        { id: 'radio', label: 'Radio', at: [915, 285], area: [900, 300, 160, 92], script: [
           ['narr', '♪ Doo-wop is playing on a pastel radio. Very 1950s.']
         ] }
       ],
@@ -319,16 +319,16 @@
         ] }
       },
       start: 'room',
-      prompt: 'Talk to the other patrons.',
+      prompt: 'Talk to Wally and the other patrons.',
       intro: [
-        ['narr', 'Whoa — the room changed! In 1968, Nom Wah lost its lease and moved one door down, to 13 Doyers Street.', 'surprised'],
+        ['narr', 'Whoa — the room changed! In 1968, Nom Wah lost its lease at Number 15 and moved everything next door, to 13 Doyers Street.'],
         ['narr', 'It\'s the 1980s now. Red vinyl booths, a tin ceiling, swivel stools — and every seat is taken.']
       ],
       spots: [
         { id: 'wally', actor: 'wally74', label: 'Wally', required: true, script: [
-          ['wally74', 'Welcome! Hmm... you look just like somebody I served back when I was a busboy.'],
-          ['wally74', 'Back in 1974, the Choys sold Nom Wah to me. Dishwasher, manager... owner.', 'proud'],
-          ['wally74', 'Now we do real dim sum — har gow, siu mai, all of it — on carts.'],
+          ['wally74', 'Welcome! Hmm… you look just like somebody I served back when I was a busboy.'],
+          ['wally74', 'Back in 1974, the Choys sold Nom Wah to me. Dishwasher, manager… owner.', 'proud'],
+          ['wally74', 'Now dim sum is the main event — har gow, siu mai, all of it — on carts.'],
           ['wally74', 'My rule? If it\'s not broken, don\'t fix it.', 'serious']
         ] },
         { id: 'couple', actor: 'discoA', alsoActor: 'discoB', label: 'Regulars', required: true, script: [
@@ -339,23 +339,23 @@
         { id: 'kid', actor: 'kid', label: 'Kid on a stool', required: true, script: [
           ['kid', 'Wheeeee! Uncle Wally lets me spin on the stools!', 'happy'],
           ['kid', 'My name\'s Wilson. My family comes to Chinatown on weekends!'],
-          ['narr', 'Remember that name...']
+          ['narr', 'Remember that name…']
         ] },
-        { id: 'boombox', label: 'Boombox', at: [980, 280], area: [880, 300, 200, 92], script: [
-          ['narr', '♪ Somebody\'s boombox is playing disco and funk.']
+        { id: 'boombox', label: 'Boombox', at: [620, 176], area: [565, 182, 110, 72], script: [
+          ['narr', '♪ Somebody\'s boombox is blasting funk and early hip-hop.']
         ] },
         { id: 'poster', label: 'Poster', at: [488, 200], area: [436, 128, 104, 150], script: [
-          ['narr', 'A poster advertises mooncakes in groovy lettering. The bakery is still going strong.']
+          ['narr', 'A poster advertises mooncakes in groovy lettering. Wally\'s mooncakes draw lines right out the door.']
         ] },
-        { id: 'window', label: 'Window', at: [220, 430], area: [58, 300, 324, 257], script: [
+        { id: 'window', label: 'Window', at: [300, 430], area: [58, 300, 324, 257], script: [
           ['narr', 'A big yellow Checker cab squeezes down the narrow street.']
         ] }
       ],
       sceneDone: {
         room: [
           { enter: 'cart70' }, { sfx: 'squeak' },
-          ['cart70', 'Siu mai! Har gow! Lo bak go!', 'happy'],
-          ['cart70', 'Take a look — what looks good?'],
+          ['cart70', 'Siu mai! Lo bak go! Cheung fun!', 'happy'],
+          ['cart70', 'Take a look — what would you like?'],
           { order: { who: 'cart70', options: ['siu_mai', 'turnip_cake', 'cheung_fun'] } },
           ['cart70', 'I\'ll stamp your card. Pay at the counter when you\'re done!']
         ]
@@ -375,7 +375,7 @@
         ] }
       },
       start: 'room',
-      prompt: 'Order some tea from the dim sum lady.',
+      prompt: 'Order some tea, then say hi to Wally.',
       intro: [
         ['narr', 'The 1990s. It\'s quieter now. Huge new dim sum palaces with hundreds of seats have opened nearby.'],
         ['narr', 'Over in the corner, a movie crew is setting up lights.']
@@ -391,7 +391,7 @@
         ] },
         { id: 'wally', actor: 'wally96', label: 'Wally', required: true, script: [
           ['wally96', 'Sit, sit. You play cards?'],
-          ['wally96', 'These days it\'s mostly old friends. We play cards and drink oolong. Chefs from other restaurants come by after their shifts.'],
+          ['wally96', 'These days it\'s mostly old friends. We play cards and drink tea. Chefs from other restaurants come by after their shifts.'],
           ['wally96', 'Movie people love this room too. "Law & Order" filmed here. That pays more than the dumplings!', 'happy'],
           ['wally96', 'The young people? They do other things now. Maybe someday, somebody will want this place.', 'worried']
         ] },
@@ -400,9 +400,9 @@
           ['crew90', 'This room has been in movies and TV shows for years.']
         ] },
         { id: 'sacks', label: 'Rice sacks', at: [660, 560], area: [570, 560, 180, 100], script: [
-          ['narr', 'Sacks of rice slump against the wall, and the tea tins are dusty. The place could use a little love...']
+          ['narr', 'Sacks of rice slump against the wall, and the tea tins are dusty. The place could use a little love…']
         ] },
-        { id: 'window', label: 'Window', at: [220, 430], area: [58, 300, 324, 257], script: [
+        { id: 'window', label: 'Window', at: [300, 430], area: [58, 300, 324, 257], script: [
           ['narr', 'A yellow Crown Victoria taxi honks its way down the block.']
         ] }
       ],
@@ -423,17 +423,17 @@
       spots: [
         { id: 'wilson', actor: 'wilson10', label: 'Wilson', required: true, script: [
           ['wilson10', 'Hi! I\'m Wilson Tang. Remember the kid spinning on the stools? That was me!', 'happy'],
-          ['wilson10', 'I worked in finance at Morgan Stanley, ran my own bakery on Allen Street, then went back to finance...'],
+          ['wilson10', 'I worked in finance at Morgan Stanley, ran my own bakery on Allen Street, then went back to finance…'],
           ['wilson10', 'But when Uncle Wally was ready to retire, nobody else wanted this place. I did.'],
           ['you', 'So what\'s changing?'],
           ['wilson10', 'No more carts. Everything is cooked to order, so it comes out hot and fresh. And we serve dim sum into the night.'],
           ['wilson10', 'We gutted the kitchen for new equipment. New paint, patched floors, four new lights, tablecloths. That\'s about it.'],
-          ['wilson10', 'The booths, the tin ceiling, the tile floor, that old glass counter — they stay. This is what the place looked like in the \'50s.'],
-          ['wilson10', 'Oh, and Nom Wah is on the internet now! Website, Facebook, Twitter...', 'happy']
+          ['wilson10', 'The booths, the tin ceiling, the tile floor, that old glass counter — they stay. People walk in and say, "Wow, it feels like the 1950s in here!"'],
+          ['wilson10', 'Oh, and Nom Wah is on the internet now! Website, Facebook, Twitter…', 'happy']
         ] },
         { id: 'wally', actor: 'wally10', label: 'Uncle Wally', required: true, script: [
           ['wally10', 'I offered to modernize the dining room for him. He said no! Keep the old tiles and the stools.'],
-          ['wally10', 'Sixty years of my life are in this room. I was worried...', 'worried'],
+          ['wally10', 'Sixty years of my life are in this place. I was worried…', 'worried'],
           ['wally10', 'But he didn\'t mess it up. I\'m proud of him.', 'happy']
         ] },
         { id: 'menu', label: 'Order sheet', at: [880, 786], area: [760, 776, 240, 110], required: true, script: [
@@ -442,12 +442,12 @@
           ['narr', 'A few minutes later it arrives — cooked to order and piping hot.']
         ] },
         { id: 'counter', label: 'Glass counter', at: [660, 430], area: [520, 404, 300, 82], script: [
-          ['narr', 'This glass counter has been here for about ninety years. Wilson calls the place "a piece of New York history."']
+          ['narr', 'This glass counter is about ninety years old — about as old as Nom Wah itself. Wilson calls the place "a piece of New York history."']
         ] },
         { id: 'cabinet', label: 'Tea cabinet', at: [700, 250], area: [560, 186, 300, 200], script: [
           ['narr', 'The tea cabinet was painted green for decades. Wilson picked this blue in 2010.']
         ] },
-        { id: 'window', label: 'Window', at: [220, 430], area: [58, 300, 324, 257], script: [
+        { id: 'window', label: 'Window', at: [300, 430], area: [58, 300, 324, 257], script: [
           ['narr', 'A yellow hybrid taxi zips past with an ad glowing on its roof.']
         ] }
       ],
@@ -469,31 +469,31 @@
       spots: [
         { id: 'wilson', actor: 'wilson20', label: 'Wilson', required: true, script: [
           ['wilson20', 'Welcome! You picked a strange time to visit.', 'worried'],
-          ['wilson20', 'News about the coronavirus has people scared, and a lot of that fear got aimed at Chinatown. Customers just stopped coming.', 'worried'],
+          ['wilson20', 'News about the coronavirus has people scared, and a lot of that fear got unfairly aimed at Chinatown. A lot of customers stopped coming.', 'worried'],
           ['you', 'Are you worried?'],
-          ['wilson20', 'Small immigrant-run businesses are very resourceful and resilient. They don\'t have debt. They live within their means.', 'serious'],
+          ['wilson20', 'Small immigrant-run businesses tend to be very resourceful and resilient. They don\'t have debt, and they live within their means.', 'serious'],
           ['wilson20', 'If we have to close the dining room, we\'ll ship frozen dumplings across the country. I\'ll drive deliveries myself!'],
           ['wilson20', 'Nom Wah has survived for a hundred years. We\'ll get through this too.', 'happy']
         ] },
         { id: 'insta', actor: 'insta20', label: 'Customer', required: true, script: [
           { sfx: 'shutter' },
           ['insta20', 'Hold on — the camera eats first!', 'happy'],
-          ['insta20', 'Nom Wah is all over Instagram. Vogue even threw a Met Gala party here in 2015 — lion dancers and silk pajamas!'],
+          ['insta20', 'Nom Wah is all over Instagram. Vogue even threw a pre-Met Gala pajama party here in 2015 — with lion dancers!'],
           ['insta20', 'And now there are Nom Wahs in Philadelphia and even in Shenzhen, China.']
         ] },
-        { id: 'banner', label: '100 Years banner', at: [1354, 168], area: [1124, 140, 460, 56], script: [
+        { id: 'banner', label: '100 Years banner', at: [1135, 150], area: [1124, 140, 460, 56], script: [
           ['narr', 'A banner reads "100 YEARS." This fall, Wilson will publish The Nom Wah Cookbook to celebrate.']
         ] },
         { id: 'takeout', label: 'Takeout', at: [790, 318], area: [700, 312, 196, 80], script: [
           ['narr', 'Takeout bags and boxes of frozen dumplings, ready to go.']
         ] },
-        { id: 'window', label: 'Window', at: [220, 430], area: [58, 300, 324, 257], script: [
+        { id: 'window', label: 'Window', at: [300, 430], area: [58, 300, 324, 257], script: [
           ['narr', 'Doyers Street is mostly closed to cars now. A delivery rider zips by on an e-bike.']
         ] }
       ],
       sceneDone: {
         room: [
-          ['narr', 'Across Chinatown, neighbors rally to support each other\'s small businesses. Nom Wah, which has always shown up for the community, is right in the middle of it.']
+          ['narr', 'Across Chinatown, neighbors rally to support each other\'s small businesses. Nom Wah, which does a lot of community work, is right in the middle of it.']
         ]
       },
       next: 'Finish your meal'
@@ -514,10 +514,10 @@
       ],
       spots: [
         { id: 'server', actor: 'server26', label: 'Server', required: true, script: [
-          ['server26', 'Last pot of tea for you! And one egg roll — Nom Wah calls it "The Original."', 'happy'],
+          ['server26', 'One last pot of tea for you! And one egg roll — Nom Wah calls it "The Original."', 'happy'],
           { dish: 'egg_roll' },
           { sfx: 'pour' },
-          ['server26', 'More than a hundred years, and it\'s still the same booths, the same tin ceiling, the same counter.'],
+          ['server26', 'More than a hundred years of Nom Wah, and we\'ve kept the old booths, the tin ceiling and the counter.'],
           ['narr', 'Say thanks the regular way.'],
           { tap: true },
           ['server26', 'Ha! Somebody taught you well.', 'happy']
@@ -526,22 +526,22 @@
           ['nj1', 'We drove in from New Jersey just for these dumplings.'],
           ['nj2', 'Worth the line. Every single time.', 'happy']
         ] },
-        { id: 'walls', label: 'Photos & clippings', at: [1400, 170], area: [1130, 160, 450, 200], script: [
+        { id: 'walls', label: 'Photos & clippings', at: [1130, 120], area: [1130, 160, 450, 200], script: [
           ['narr', 'Framed newspaper clippings and photos cover the walls — more than a century of visitors.']
         ] },
-        { id: 'window', label: 'Window', at: [220, 430], area: [58, 300, 324, 257], script: [
+        { id: 'window', label: 'Window', at: [300, 430], area: [58, 300, 324, 257], script: [
           ['narr', 'Outside, a Citi Bike rolls past. No cars on Doyers Street today.']
         ] },
         // ---- out on the street
         { id: 'guide', scene: 'street', actor: 'guide26', label: 'Tour guide', required: true, script: [
           ['guide26', 'And here, in the crook of Doyers Street: Nom Wah Tea Parlor, open since 1920!', 'happy'],
-          ['guide26', 'See that pink awning? It used to be bright red. A century of sunshine will do that.'],
-          ['guide26', 'A bakery, a tea parlor, dim sum carts, then cooked to order... It keeps changing just enough to stay the same.']
+          ['guide26', 'See that pink awning? It used to be bright red. Years of sunshine will do that.'],
+          ['guide26', 'A bakery, a tea parlor, dim sum carts, now cooked-to-order dim sum… It keeps changing just enough to stay the same.']
         ] },
         { id: 'sign', scene: 'street', label: 'Sign', at: [800, 300], area: [650, 286, 300, 150], script: [
           ['narr', '南華茶室 — Nom Wah Tea Parlor. The Chinese name means, roughly, "South China Tea House."']
         ] },
-        { id: 'mural', scene: 'street', label: 'Street mural', at: [460, 820], area: [200, 760, 520, 140], script: [
+        { id: 'mural', scene: 'street', label: 'Street mural', at: [330, 700], area: [200, 640, 520, 260], script: [
           ['narr', 'The street itself is painted with a giant mural called "Rice Terraces." Doyers Street belongs to people now, not cars.']
         ] }
       ],
@@ -550,7 +550,7 @@
           ['narr', 'You finish the last sip of tea.'],
           { button: 'Head outside' },
           { sfx: 'door_bell' }, { scene: 'street' }, { zoom: [1, 800, 470] },
-          ['narr', 'You step back out onto Doyers Street. Same crooked bend, a hundred years later.']
+          ['narr', 'You step back out onto Doyers Street. Same crooked bend, more than a hundred years later.']
         ]
       },
       next: 'See what you learned'
@@ -560,13 +560,13 @@
   // ---------------------------------------------------------------- the ending
   var ENDING = {
     title: 'One table. 100+ years.',
-    question: 'How has Nom Wah stayed in business, and in the family, for more than a century?',
+    question: 'How has Nom Wah stayed in business, and kept its history, for more than a century?',
     ingredients: [
       { icon: 'almond_cookie', name: 'Great pastries & tea', text: 'Almond cookies and mooncakes kept the lights on for decades. The bakery came first.' },
-      { icon: 'cha_siu_bao', name: 'Hard work, passed down', text: 'Wally went from dishwasher (1950) to manager to owner (1974), then handed it on to Wilson (2010).' },
-      { icon: 'tea', name: 'Keep the old room', text: 'The booths, the tin ceiling, the tile floor and the ninety-year-old counter never left.' },
-      { icon: 'egg_roll', name: 'Change what matters', text: 'Carts became cooked-to-order, dim sum ran into the night, and Nom Wah went online.' },
-      { icon: 'har_gow', name: 'Resilience & community', text: 'No debt, living within their means, and showing up for Chinatown, even in 2020.' }
+      { icon: 'cha_siu_bao', name: 'Hard work, passed down', text: 'Wally went from dishwasher (1950) to manager to owner (1974), then passed it on to Wilson (2010).' },
+      { icon: 'tea', name: 'Keep the old room', text: 'The booths, the tin ceiling, the tile floor and the century-old glass counter are all still there.' },
+      { icon: 'egg_roll', name: 'Change what matters', text: 'Carts gave way to cooked-to-order dishes, dim sum ran into the night, and Nom Wah went online.' },
+      { icon: 'har_gow', name: 'Resilience & community', text: 'Like its Chinatown neighbors, Nom Wah stayed resourceful and resilient, and kept showing up for the community, even in 2020.' }
     ]
   };
 
@@ -581,17 +581,25 @@
     { t: 'Nom Wah Tea Parlor — Our Story / Chinatown', u: 'https://www.nomwah.com/chinatown' },
     { t: 'Cookery by the Book — The Nom Wah Cookbook with Wilson Tang (tea cabinet, "if it\'s not broken")', u: 'https://www.cookerybythebook.com/home/2020/12/27/the-nom-wah-cookbook-wilson-tang' },
     { t: 'MOFAD City — Nom Wah (carts under Wally)', u: 'http://city.mofad.org/chinatown/explore/nomwah' },
-    { t: 'Signal v. Noise — Steeped in History (cards, oolong, what Wilson kept)', u: 'https://signalvnoise.com/svn3/steeped-in-history/' },
+    { t: 'Signal v. Noise — Steeped in History (card games, what Wilson kept)', u: 'https://signalvnoise.com/svn3/steeped-in-history/' },
     { t: 'Resy (2020) — The Enduring Value of New York\'s Oldest Chinese Restaurant', u: 'https://blog.resy.com/2020/08/the-enduring-value-of-new-yorks-oldest-chinese-restaurant/' },
     { t: 'AP via Mining Journal (2020) — Nom Wah at 100: a cookbook about a restaurant & community', u: 'https://www.miningjournal.net/life/saturday-food-drink/2020/11/nom-wah-at-100-a-cookbook-about-a-restaurant-community/' },
     { t: 'U.S. Office of the Historian — Repeal of the Chinese Exclusion Act, 1943', u: 'https://history.state.gov/milestones/1937-1945/chinese-exclusion-act-repeal' },
-    { t: 'Wikipedia — Doyers Street (pedestrian street, "Rice Terraces" mural)', u: 'https://en.wikipedia.org/wiki/Doyers_Street' }
+    { t: 'Wikipedia — Doyers Street (pedestrian street, "Rice Terraces" mural)', u: 'https://en.wikipedia.org/wiki/Doyers_Street' },
+    { t: 'Nom Wah Tea Parlor — Our Story (Wally\'s mooncakes drew lines out the door)', u: 'https://www.nomwah.com/our-story' },
+    { t: 'Red Hook Star-Revue — Nom Wah owner Wilson Tang talks traditions (counter stools, keeping the old room)', u: 'https://www.star-revue.com/nom-wah-owner-wilson-tang-talks-traditions-and-chinese-american-classics-by-erin-degregorio/' },
+    { t: 'Mott Street Girls — Nom Wah Tea Parlor', u: 'https://www.mottstreetgirls.com/chinatown/nom-wah-tea-parlor' },
+    { t: 'AP via Spectrum News (Feb 2020) — Misguided virus fears hitting Asian American businesses', u: 'https://spectrumlocalnews.com/ap-top-news/2020/02/18/misguided-virus-fears-hitting-asian-american-businesses' },
+    { t: 'NW Asian Weekly (2020) — Nom Wah at 100 (frozen dumplings, deliveries)', u: 'https://nwasianweekly.com/2020/12/nom-wah-at-100-a-cookbook-about-a-restaurant-and-community/' },
+    { t: 'Who What Wear (2015) — Vogue\'s pre-Met Gala pajama party at Nom Wah', u: 'https://www.whowhatwear.com/vogue-chinese-pj-party-met-gala' },
+    { t: 'Wikipedia — Chatham Square station (Third Avenue El, closed 1955)', u: 'https://en.wikipedia.org/wiki/Chatham_Square_station' }
   ];
 
   var NOTES = [
     'This is an unofficial student/fan project. It is not affiliated with or endorsed by Nom Wah Tea Parlor.',
     'Dialogue is dramatized from the sources. Quotes from Wilson Tang are adapted from published interviews. Portraits are illustrations, not likenesses.',
-    'The waiter, Mr. Lee, the dim sum ladies, the customers, the film crew and the tour guide are fictional characters.',
+    'The waiter, Mr. Lee, the dim sum ladies, the regulars, the card player, the film crew, the customers, the server and the tour guide are fictional. The Choys, Wally Tang and Wilson Tang are real; their lines are dramatized from published accounts.',
+    'Period details (cars, phones, streetcars, radio music, tea customs) are general background history.',
     'Sources disagree on a few dates. Nom Wah says it opened in 1920, and the Choys are its first documented owners. Most sources say Wally bought it in 1974; the Tenement Museum says 1976.',
     'Wilson calls Wally "Uncle Wally." Sources disagree on whether they are related by blood.'
   ];

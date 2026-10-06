@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scan to play — One Table, 100 Years</title>
+  <link rel="icon" href="{{FAVICON}}">
+  <style>
+{{FONTS}}
+    :root { --red: #b8312b; --gold: #e9c35a; --gold-dark: #b48a2c; --cream: #fbf4e3; --ink: #2a1c18; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      display: grid; place-items: center; padding: 3vmin;
+      background:
+        radial-gradient(ellipse at 50% -10%, #4a1a14 0%, rgba(74, 26, 20, 0) 60%),
+        repeating-linear-gradient(45deg, rgba(233, 195, 90, .035) 0 2px, transparent 2px 18px),
+        #1b0f0c;
+      font-family: 'Nunito', 'Avenir Next', 'Segoe UI', system-ui, sans-serif; color: var(--ink);
+    }
+    .card {
+      display: grid; grid-template-columns: auto 1fr; gap: 5vmin; align-items: center;
+      width: min(1500px, 94vw); padding: 5vmin 6vmin; border-radius: 3vmin;
+      background: var(--cream); border: .7vmin solid var(--red); outline: .35vmin solid var(--gold); outline-offset: -2vmin;
+      box-shadow: 0 3vmin 8vmin rgba(0, 0, 0, .55);
+    }
+    .qr { background: #fff; padding: 1.6vmin; border-radius: 2vmin; box-shadow: inset 0 0 0 .5vmin #eadfc6; }
+    .qr svg { display: block; width: min(56vmin, 620px); height: auto; }
+    .zh { font-family: 'PingFang TC', 'Noto Serif TC', 'Songti TC', 'Microsoft JhengHei', serif; color: var(--red); font-weight: 700; letter-spacing: 1.4vmin; font-size: 3.4vmin; }
+    h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 800; font-size: 8.4vmin; line-height: .98; margin: 1vmin 0 1.4vmin; letter-spacing: -.2vmin; }
+    .sub { font-weight: 700; color: #5a4a3a; font-size: 2.7vmin; margin: 0 0 3vmin; }
+    .scan { display: inline-block; background: var(--red); color: #fff7e0; border: .4vmin solid var(--gold); border-radius: 99px; padding: 1.2vmin 3vmin; font-family: 'Fraunces', Georgia, serif; font-weight: 800; font-size: 4.2vmin; margin-bottom: 2.6vmin; }
+    ol { margin: 0 0 2.6vmin; padding-left: 4.4vmin; font-size: 3vmin; font-weight: 700; line-height: 1.5; }
+    .url { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 2.5vmin; font-weight: 700; color: #8e2420; word-break: break-all; }
+    .note { font-size: 2.2vmin; color: #7a6a58; font-weight: 700; margin-top: 1vmin; }
+    @media (max-aspect-ratio: 1/1) {
+      .card { grid-template-columns: 1fr; text-align: center; }
+      .qr { justify-self: center; }
+      .qr svg { width: min(78vw, 520px); }
+      ol { text-align: left; display: inline-block; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="qr" role="img" aria-label="QR code that opens {{URL}}">{{QR_SVG}}</div>
+    <div>
+      <div class="zh">南華茶室</div>
+      <h1>One Table, 100&nbsp;Years</h1>
+      <p class="sub">A Nom Wah Tea Parlor story · Doyers Street, Chinatown · 1920 → Today</p>
+      <div class="scan">📱 Scan to play</div>
+      <ol>
+        <li>Point your phone's camera at the code</li>
+        <li>Tap the link that pops up</li>
+        <li>Tap <b>“Take a seat”</b> — about 10 minutes</li>
+      </ol>
+      <div class="url">{{URL_SHORT}}</div>
+      <div class="note">🎧 Sound on — headphones recommended · works best held upright</div>
+    </div>
+  </main>
+</body>
+</html>

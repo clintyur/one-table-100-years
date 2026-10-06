@@ -24,13 +24,14 @@
 
   // ------------------------------------------------------------------ state
   var state = {
-    name: 'Friend', stop: -1, scene: null, done: {}, sceneDoneRan: {}, busy: true,
+    name: 'Friend', named: false, stop: -1, scene: null, done: {}, sceneDoneRan: {}, busy: true,
     items: [], tea: null, actors: {}, zoom: 1, ended: false
   };
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function sleep(ms) { return new Promise(function (r) { setTimeout(r, reduceMotion ? Math.min(ms, 250) : ms); }); }
   function fmt(t) { return String(t).replace(/\{name\}/g, state.name); }
+  function esc(t) { return String(t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function stopDef() { return STOPS[state.stop]; }
 
   // ------------------------------------------------------------------ scene rendering
@@ -60,12 +61,16 @@
     var svg = '<svg class="scene-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">' +
       '<defs><filter id="fx-dim"><feComponentTransfer><feFuncR type="linear" slope=".68"/><feFuncG type="linear" slope=".68"/><feFuncB type="linear" slope=".72"/></feComponentTransfer></filter>' +
       '<filter id="fx-glow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#fff3b0" flood-opacity=".95"/></filter></defs>';
+    var hits = '<g class="hit-layer">' + spotsHere().filter(function (sp) { return sp.area; }).map(function (sp) {
+      return '<rect class="hit" data-spot="' + sp.id + '" x="' + sp.area[0] + '" y="' + sp.area[1] + '" width="' + sp.area[2] + '" height="' + sp.area[3] +
+        '" rx="10" fill="transparent" pointer-events="all"><title>' + sp.label + '</title></rect>';
+    }).join('') + '</g>';
     if (sc.kind === 'room') {
       var r = ART.room(sc.room);
-      svg += '<g class="room-back">' + r.back + '</g><g class="layer-far">' + far + '</g><g class="room-front">' + r.front + '</g>' +
+      svg += '<g class="room-back">' + r.back + '</g>' + hits + '<g class="layer-far">' + far + '</g><g class="room-front">' + r.front + '</g>' +
         '<g class="layer-near">' + near + '</g><g class="layer-carts">' + carts + '</g><g id="table-layer">' + tableSvg() + '</g>';
     } else {
-      svg += ART.street(sc.era) + '<g class="layer-far">' + far + '</g><g class="layer-near">' + near + '</g>';
+      svg += ART.street(sc.era) + hits + '<g class="layer-far">' + far + '</g><g class="layer-near">' + near + '</g>';
     }
     svg += '</svg>';
     E.host.innerHTML = svg;
@@ -139,15 +144,6 @@
       var actorPresent = !sp.actor || state.actors[sp.actor];
       if (!actorPresent) return;
       var done = !!state.done[sp.id];
-      if (sp.area) {
-        var ar = h('button', 'spot-area');
-        ar.setAttribute('aria-label', sp.label);
-        ar.style.left = (sp.area[0] / 16) + '%'; ar.style.top = (sp.area[1] / 9) + '%';
-        ar.style.width = (sp.area[2] / 16) + '%'; ar.style.height = (sp.area[3] / 9) + '%';
-        ar.tabIndex = -1;
-        ar.addEventListener('click', function (ev) { ev.stopPropagation(); activate(sp); });
-        E.spots.appendChild(ar);
-      }
       var p = spotPos(sp);
       if (!p) return;
       var m = h('button', 'spot' + (sp.actor ? ' spot-person' : ' spot-thing') + (sp.required ? ' spot-required' : ' spot-optional') + (done ? ' spot-done' : ''));
@@ -161,10 +157,15 @@
 
   // clicking a person in the drawing
   E.host.addEventListener('click', function (ev) {
-    var g = ev.target.closest && ev.target.closest('.actor');
-    if (!g || state.busy) return;
-    var id = g.getAttribute('data-id');
-    var sp = spotsHere().filter(function (s) { return s.actor === id || s.alsoActor === id; })[0];
+    if (state.busy || !ev.target.closest) return;
+    var g = ev.target.closest('.actor'), sp = null;
+    if (g) {
+      var id = g.getAttribute('data-id');
+      sp = spotsHere().filter(function (s) { return s.actor === id || s.alsoActor === id; })[0];
+    } else {
+      var hit = ev.target.closest('.hit');
+      if (hit) sp = spotsHere().filter(function (s) { return s.id === hit.getAttribute('data-spot'); })[0];
+    }
     if (sp) { ev.stopPropagation(); activate(sp); }
   });
 
@@ -279,7 +280,7 @@
     E.dialog.classList.toggle('you', isYou);
     E.nextInd.classList.remove('show');
     if (isNarr) { E.nametag.textContent = ''; E.nametag.classList.remove('show'); }
-    else { E.nametag.textContent = isYou ? state.name : (c ? c.name : who); E.nametag.classList.add('show'); }
+    else { E.nametag.textContent = isYou ? (state.named ? state.name : 'You') : (c ? c.name : who); E.nametag.classList.add('show'); }
     var speaking = null;
     if (c && state.actors[who]) {
       if (expr) setActorExpr(who, expr);
@@ -312,7 +313,7 @@
         '<div class="ticket-head"><span>南華茶室</span><b>NOM WAH TEA PARLOR</b><span>15 Doyers St.</span></div>' +
         '<label for="name-in">Name for the table</label>' +
         '<input id="name-in" maxlength="16" autocomplete="off" spellcheck="false" placeholder="Your name">' +
-        '<button type="submit" class="btn btn-red">Seat me</button>';
+        '<button type="submit" class="btn btn-red">That\'s me!</button>';
       showModal(box, 'modal-ticket');
       var input = $('#name-in', box);
       setTimeout(function () { input.focus(); }, 60);
@@ -320,6 +321,7 @@
         ev.preventDefault();
         var v = input.value.replace(/\s+/g, ' ').trim().slice(0, 16);
         state.name = v || 'Friend';
+        state.named = true;
         AU.sfx('select');
         closeModal();
         resolve();
@@ -341,8 +343,6 @@
     });
     wrap.appendChild(row);
     showModal(wrap, 'modal-menu');
-    var first = row.querySelector('button');
-    if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 60);
   }
 
   async function order(o) {
@@ -355,7 +355,8 @@
     addDish(id);
     var D = ST.DISHES[id];
     var lines = ['Good choice!', 'Ho sik — delicious!', 'Coming right up!'];
-    if (o.who && o.who !== 'narr') await say(o.who, lines[state.items.length % lines.length] + ' One ' + D.en.toLowerCase().replace(/^the /, '') + '.', 'happy');
+    state.orders = (state.orders || 0) + 1;
+    if (o.who && o.who !== 'narr') await say(o.who, lines[(state.orders - 1) % lines.length] + ' One ' + D.en.toLowerCase().replace(/^the /, '') + '.', 'happy');
   }
 
   async function chooseTea(o) {
@@ -377,11 +378,12 @@
     return new Promise(function (resolve) {
       var n = 0;
       var pad = h('button', 'tap-pad');
-      pad.innerHTML = '<span class="tap-fingers" aria-hidden="true">☝☝</span><span class="tap-text">Tap the table twice to say thanks</span><span class="tap-count">0 / 2</span>';
+      pad.innerHTML = '<span class="tap-fingers" aria-hidden="true">☝☝</span><span class="tap-text">Tap the table with two fingers to say thanks</span><span class="tap-count">0 / 2</span>';
       E.stage.appendChild(pad);
       pad.focus({ preventScroll: true });
       pad.addEventListener('click', function (ev) {
         ev.stopPropagation();
+        if (n >= 2) return;
         n++;
         AU.sfx('tap');
         pad.classList.remove('tapped'); void pad.offsetWidth; pad.classList.add('tapped');
@@ -556,6 +558,22 @@
       playStop(0, true);
     };
     $('#title-about').onclick = function () { showAbout(); };
+    var jump = $('#era-jump');
+    if (jump && !jump.querySelector('button')) {
+      STOPS.forEach(function (s, i) {
+        var b = h('button', 'era-chip', s.label);
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Start at ' + s.label);
+        b.onclick = function () {
+          AU.unlock();
+          AU.sfx('select');
+          t.classList.remove('show');
+          $('#title-art').innerHTML = '';
+          playStop(i, true);
+        };
+        jump.appendChild(b);
+      });
+    }
   }
 
   function sourcesHtml() {
@@ -590,7 +608,7 @@
     box.innerHTML =
       '<div class="ending-head"><span class="ending-zh">南華茶室</span><h2>' + en.title + '</h2><p class="q">' + en.question + '</p></div>' +
       '<ol class="ingredients">' + ing + '</ol>' +
-      '<div class="your-table"><h3>' + fmt('{name}\'s table') + '</h3><div class="minis">' + (table || '<em>Just tea!</em>') + '</div></div>' +
+      '<div class="your-table"><h3>' + (state.named ? esc(fmt('{name}\'s table')) : 'Your table') + '</h3><div class="minis">' + (table || '<em>Just tea!</em>') + '</div></div>' +
       '<div class="ending-btns"><button class="btn btn-red" id="again-btn">Play again</button><button class="btn" id="about-btn">Notes &amp; sources</button></div>';
     endingBox = box;
     showModal(box, 'modal-ending');
@@ -617,6 +635,25 @@
   });
   document.addEventListener('keydown', function (ev) {
     if (ev.key === 'Escape' && E.overlay.classList.contains('modal-about')) { var c = $('.about .close'); if (c) c.click(); }
+  });
+
+  // ------------------------------------------------------------------ restart & full screen
+  $('#restart-btn').addEventListener('click', function (ev) {
+    ev.stopPropagation();
+    if ($('#title').classList.contains('show')) return;
+    if (window.confirm('Restart from the title screen?')) location.href = location.href.split('#')[0].split('?')[0];
+  });
+  var root = document.documentElement;
+  var fsReq = root.requestFullscreen || root.webkitRequestFullscreen;
+  var fsExit = document.exitFullscreen || document.webkitExitFullscreen;
+  if (!fsReq) $('#fs-btn').style.display = 'none';
+  $('#fs-btn').addEventListener('click', function (ev) {
+    ev.stopPropagation();
+    var on = document.fullscreenElement || document.webkitFullscreenElement;
+    try {
+      var r = on ? fsExit.call(document) : fsReq.call(root);
+      if (r && r.catch) r.catch(function () {});
+    } catch (e) { /* not allowed here */ }
   });
 
   // ------------------------------------------------------------------ boot
