@@ -35,6 +35,10 @@ HOW TO PLAY
 
 
 PRESENTING TIPS
+- LET THE CLASS PLAY ON THEIR PHONES: put this page on the projector and
+  have everyone scan the QR code with their phone camera:
+  https://clintyur.github.io/one-table-100-years/qr.html
+  (it's also in this folder as qr.html)
 - FULL SCREEN: click the square-corners button in the top-right corner
   (or press F11 on Windows, Control+Command+F on a Mac).
 - START FROM A CERTAIN ERA (to split the presentation): on the title screen,
@@ -50,7 +54,7 @@ IF SOMETHING LOOKS WRONG
   (Browsers only allow sound after your first click, so it starts with
   "Take a seat".)
 - Everything is inside that one .html file. Nothing else needs to be installed.
-- School computer won't open files? Backup online version:
+- School computer won't open files? Play the online version:
   https://clintyur.github.io/one-table-100-years/
 
 

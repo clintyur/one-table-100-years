@@ -54,11 +54,12 @@ The ending shows "the recipe" that kept Nom Wah going, which answers the researc
 
 `tools/make_zip.sh` bundles everything (code, art, music, fonts) into **one** self-contained file, `dist/One-Table-100-Years.html`, and zips it with `HOW TO PLAY.txt` as `dist/One-Table-100-Years.zip` (~190 KB). The one-file version works offline and contains no `.js` files, which matters because Gmail blocks zips that contain `.js` files.
 
-## Putting it online
+## The website & QR code
 
-It's a plain static site, so any static host works. For example:
-- drag the folder onto Netlify Drop
-- push to a GitHub repo and turn on GitHub Pages
+- Game: **https://clintyur.github.io/one-table-100-years/** (works on phones and laptops)
+- Projector page with a QR code to scan: **https://clintyur.github.io/one-table-100-years/qr.html**
+- The site is the one-file build, published to the `gh-pages` branch by GitHub Pages.
+  After editing anything, run `tools/deploy.sh` to rebuild and republish (live about a minute later).
 
 ## Notes
 
